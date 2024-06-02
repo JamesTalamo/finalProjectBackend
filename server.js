@@ -5,6 +5,7 @@ const cors = require('cors')
 require('dotenv').config()
 const connectDB = require('./config/connectDB')
 
+const path = require('path')
 
 const express = require('express')
 const app = express()
@@ -15,6 +16,10 @@ connectDB()
 
 
 app.use('/api', require('./Routes/routes'))
+
+app.use('/', (req,res) => {
+    res.sendFile(path.join(__dirname,'main.html'))
+})
 
 
 const PORT = process.env.PORT || 9191
