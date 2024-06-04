@@ -5,4 +5,6 @@ const apiControls = require('../Controller/Api')
 router.get('/', apiControls.getAllMessage)
 router.post('/', apiControls.addNewMessage)
 
+router.delete('/', apiControls.deleteAllMessage)
+
 module.exports = router

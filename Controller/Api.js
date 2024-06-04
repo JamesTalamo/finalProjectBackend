@@ -28,7 +28,19 @@ const getAllMessage = async (req, res) => {
     }
 }
 
+const deleteAllMessage = async (req,res) => {
+    try {
+        const result = await messageSchema.deleteMany({});
+        res.status(200).json({ "success": "All messages deleted successfully" });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'An error occurred while fetching messages' });
+    }
+}
+
 module.exports = {
     addNewMessage,
-    getAllMessage
+    getAllMessage,
+    deleteAllMessage
 }
