@@ -1,13 +1,14 @@
 const messageSchema = require('../model/Message')
 
 const addNewMessage = async (req, res) => {
-    const { name, message } = req.body
-    if (!name || !message) return res.status(400).json({ "error": "name and message is required!" })
+    const { name, message, createdAt } = req.body
+    if (!name || !message || !createdAt) return res.status(400).json({ "error": "name and message and createdAt is required!" })
 
     try {
         const newMessage = new messageSchema({
             name: name,
-            message: message
+            message: message,
+            createdAt: createdAt
         })
 
         await newMessage.save()
@@ -28,7 +29,7 @@ const getAllMessage = async (req, res) => {
     }
 }
 
-const deleteAllMessage = async (req,res) => {
+const deleteAllMessage = async (req, res) => {
     try {
         const result = await messageSchema.deleteMany({});
         res.status(200).json({ "success": "All messages deleted successfully" });

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const MessageSchema = new Schema({
     name: {
@@ -11,9 +11,9 @@ const MessageSchema = new Schema({
         required: true
     },
     createdAt: {
-        type: Date,
-        default: Date.now
+        type: String,
+        required: true
     }
-})
+});
 
-module.exports = mongoose.model('message', MessageSchema)
+module.exports = mongoose.model('message', MessageSchema);
